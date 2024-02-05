@@ -11,28 +11,18 @@ body {
   display: grid;
   place-items: center;
   font-family: Helvetica, Arial, sans-serif;
-  background: silver;
-}
-
-header {
-  padding: 0.5rem;
-  background: red;
-  color: white;
-
-  h1 {
-    text-transform: uppercase;
-  }
+  background-color: aliceblue;
 }
 
 article {
   display: flex;
   flex-flow: column;
-  justify-content: space-between;
-  width: 12rem;
-  aspect-ratio: 1/1;
+  justify-content: center;
+  width: 35rem;
+  height: 20rem;
   border-radius: 0.5rem;
   overflow: hidden;
-  background: white;
+  background: rgba(3,113,155,1);
   text-align: center;
   transform-origin: center;
   transform: rotate(2deg);
@@ -44,9 +34,36 @@ article {
     transform: rotate(-6deg);
     word-break: break-all;
   }
-}
-
-footer {
-  height: 1rem;
-  background: red;
+  > ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    gap: 1rem;
+    position: absolute;
+    bottom: 0;
+  } 
+  > ul > li {
+    display: flex;
+    flex-direction: row;
+  }
+  > ul > li > a {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    background-position: center;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid black;
+  }
+  > ul > li:nth-of-type(1) > a {
+    background-image: url(images/github.svg);
+  }
+  > ul > li:nth-of-type(2) > a {
+    background-image: url(images/mail.svg);
+  }
+  > ul > li:nth-of-type(3) > a {
+    background-image: url(images/phone.svg);
+  }
 }

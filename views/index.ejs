@@ -1,14 +1,20 @@
 <%- include('./partials/head') %>
 
 <article>
-  <header>
-    <h1>Hallo</h1>
-    <p>mijn naam is</p>
-  </header>
 
-  <p><%= data.name %></p>
-
-  <footer></footer>
+  <p><%= data.name %> <%= data.prefix %> <%= data.surname %> <%= data.avatar %></p>
+  <ul>
+    <li>
+      <a href="https://github.com/<%= data.github_handle %>" target="_blank"></a>
+    </li>
+    <li>
+      <a href="mailto:<%= data.email %>"></a>
+    </li>
+    <li>
+      <a href="tel:<%= data.phone_number %>"></a>
+    </li>
+  </ul>
+  
 </article>
 
 <%- include('./partials/foot') %>
