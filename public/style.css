@@ -6,64 +6,39 @@
   padding: 0;
 }
 
-body {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  font-family: Helvetica, Arial, sans-serif;
-  background-color: aliceblue;
-}
-
 article {
   display: flex;
-  flex-flow: column;
-  justify-content: center;
-  width: 35rem;
-  height: 20rem;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  background: rgba(3,113,155,1);
-  text-align: center;
-  transform-origin: center;
-  transform: rotate(2deg);
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  > p {
-    font-size: 2rem;
-    font-family: 'Permanent Marker', cursive;
-    transform-origin: center;
-    transform: rotate(-6deg);
-    word-break: break-all;
-  }
-  > ul {
-    list-style: none;
+  flex-flow: row;
+  width: 100vw;
+  height: 100vh;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  color: white;
+  font-family: 'Futura', sans-serif;
+  > div {
+    position: relative;
     display: flex;
-    flex-direction: row;
-    padding: 1rem;
-    gap: 1rem;
-    position: absolute;
-    bottom: 0;
-  } 
-  > ul > li {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    transition: cubic-bezier(.02,.4,.3,.4) 1s;
+    text-transform: uppercase;
+  }
+  > div:hover {
+    flex-grow: 3;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+  }
+  > div span {
+    display: none;
+  }
+  > div:hover span {
     display: flex;
-    flex-direction: row;
   }
-  > ul > li > a {
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-size: 75%;
-    background-position: center;
-    border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
-    border: 2px solid black;
-  }
-  > ul > li:nth-of-type(1) > a {
-    background-image: url(images/github.svg);
-  }
-  > ul > li:nth-of-type(2) > a {
-    background-image: url(images/mail.svg);
-  }
-  > ul > li:nth-of-type(3) > a {
-    background-image: url(images/phone.svg);
-  }
+  > div:nth-of-type(1) {background-color: #03719b}
+  > div:nth-of-type(2) {background-color: #096998}
+  > div:nth-of-type(3) {background-color: #0060ab}
+  > div:nth-of-type(4) {background-color: #004678}
+  > div:nth-of-type(5) {background-color: #153a58; font-size: 100px;}
+  > div:nth-of-type(6) {background-color: #030320}
 }

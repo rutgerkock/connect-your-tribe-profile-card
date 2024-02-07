@@ -1,20 +1,12 @@
 <%- include('./partials/head') %>
 
 <article>
-
-  <p><%= data.name %> <%= data.prefix %> <%= data.surname %> <%= data.avatar %></p>
-  <ul>
-    <li>
-      <a href="https://github.com/<%= data.github_handle %>" target="_blank"></a>
-    </li>
-    <li>
-      <a href="mailto:<%= data.email %>"></a>
-    </li>
-    <li>
-      <a href="tel:<%= data.phone_number %>"></a>
-    </li>
-  </ul>
-  
+  <div><span> <%=data.name%> <%=data.surname%> </span></div>  
+  <div><span> <%=data.email%> </span></div>  
+  <div><span> <%=data.github_handle%> </span></div>  
+  <div><span> <%=data.website%> </span></div>  
+  <div><span> <%=data.avatar%> </span></div>  
+  <div><span> <%=data.phone_number%> </span></div>  
 </article>
 
 <%- include('./partials/foot') %>
