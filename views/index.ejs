@@ -1,12 +1,17 @@
 <%- include('./partials/head') %>
 
+<%
+// Extract the last three characters of data.name and store them in example
+const example = data.name.slice(-3);
+%>
+
 <article>
-  <div><span> <%=data.name%> <%=data.surname%> </span></div>  
-  <div><span> <%=data.email%> </span></div>  
-  <div><span> <%=data.github_handle%> </span></div>  
-  <div><span> <%=data.website%> </span></div>  
-  <div><span> <%=data.avatar%> </span></div>  
-  <div><span> <%=data.phone_number%> </span></div>  
+  <div><span> <%= data.name.charAt(0) %> </span></div>  
+  <div><span> <%= data.name.charAt(1) %> </span></div>  
+  <div><span> <%= data.name.charAt(2) %> </span></div>  
+  <div><span> <%= data.name.charAt(3) %> </span></div>  
+  <div><span> <%= data.name.charAt(4) %> </span></div>  
+  <div><span> <%= data.name.charAt(5) %> </span></div>  
 </article>
 
 <%- include('./partials/foot') %>

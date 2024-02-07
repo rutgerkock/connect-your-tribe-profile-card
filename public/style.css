@@ -15,6 +15,7 @@ article {
   flex-flow: row wrap;
   color: white;
   font-family: 'Futura', sans-serif;
+  font-size: 100px;
   > div {
     position: relative;
     display: flex;
@@ -30,15 +31,16 @@ article {
     text-orientation: upright;
   }
   > div span {
-    display: none;
+    opacity: 0;
+    transition: opacity 800ms;
   }
   > div:hover span {
-    display: flex;
+    opacity: 1;
   }
   > div:nth-of-type(1) {background-color: #03719b}
   > div:nth-of-type(2) {background-color: #096998}
   > div:nth-of-type(3) {background-color: #0060ab}
   > div:nth-of-type(4) {background-color: #004678}
-  > div:nth-of-type(5) {background-color: #153a58; font-size: 100px;}
+  > div:nth-of-type(5) {background-color: #153a58}
   > div:nth-of-type(6) {background-color: #030320}
 }
