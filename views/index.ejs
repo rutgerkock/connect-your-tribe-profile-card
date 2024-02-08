@@ -1,17 +1,36 @@
 <%- include('./partials/head') %>
 
-<%
-// Extract the last three characters of data.name and store them in example
-const example = data.name.slice(-3);
-%>
-
 <article>
-  <div><span> <%= data.name.charAt(0) %> </span></div>  
-  <div><span> <%= data.name.charAt(1) %> </span></div>  
-  <div><span> <%= data.name.charAt(2) %> </span></div>  
-  <div><span> <%= data.name.charAt(3) %> </span></div>  
-  <div><span> <%= data.name.charAt(4) %> </span></div>  
-  <div><span> <%= data.name.charAt(5) %> </span></div>  
+  <a href="#">
+    <h1><%= data.name.charAt(0) %></h1>
+    <p>Naam</p>
+    <span> <%= data.name %> <%= data.surname %> </span>
+  </a>  
+  <a href="https://github.com/<%= data.github_handle %>" target="_blank">
+    <h1><%= data.name.charAt(1) %></h1>
+    <p>Github</p>
+    <span> <%= data.github_handle %> </span>
+  </a>  
+  <a href="mailto:<%= data.email %>">
+    <h1><%= data.name.charAt(2) %></h1>
+    <p>Email</p>
+    <span> <%= data.email %> </span>
+  </a>  
+  <a href="#">
+    <h1><%= data.name.charAt(3) %></h1>
+    <p>Avatar</p>
+    <span> <%= data.avatar %> </span>
+  </a>  
+  <a href="tel:<%= data.phone_number %>">
+    <h1><%= data.name.charAt(4) %></h1>
+    <p>Telefoon</p>
+    <span> <%= data.phone_number %> </span>
+  </a>  
+  <a href="h#">
+    <h1><%= data.name.charAt(5) %></h1>
+    <p>Squad</p>
+    <span>Squad ID: <%= data.squad_id %> </span>
+  </a>
 </article>
 
 <%- include('./partials/foot') %>

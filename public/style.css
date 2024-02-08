@@ -8,39 +8,68 @@
 
 article {
   display: flex;
-  flex-flow: row;
   width: 100vw;
   height: 100vh;
   justify-content: space-around;
   flex-flow: row wrap;
   color: white;
   font-family: 'Futura', sans-serif;
-  font-size: 100px;
-  > div {
+  > a {
     position: relative;
     display: flex;
+    flex-direction: column;
     flex-grow: 1;
     align-items: center;
-    justify-content: center;
-    transition: cubic-bezier(.02,.4,.3,.4) 1s;
+    transition: flex-grow ease-in-out 500ms;
     text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    height: 100vh;
+    padding-top: 40vh;
+    gap: 30vh;
+    min-width: 0px;
   }
-  > div:hover {
+  > a:hover {
     flex-grow: 3;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
   }
-  > div span {
+  > a h1 {
+    transition: opacity 500ms;
+    font-size: 100px;
+  }
+  > a p {
+    transition: opacity 500ms;
+    font-size: 40px;
     opacity: 0;
-    transition: opacity 800ms;
   }
-  > div:hover span {
+  > a:hover p {
     opacity: 1;
   }
-  > div:nth-of-type(1) {background-color: #03719b}
-  > div:nth-of-type(2) {background-color: #096998}
-  > div:nth-of-type(3) {background-color: #0060ab}
-  > div:nth-of-type(4) {background-color: #004678}
-  > div:nth-of-type(5) {background-color: #153a58}
-  > div:nth-of-type(6) {background-color: #030320}
+  > a:hover h1 {
+    opacity: 0;
+  }
+  > a span {
+    opacity: 0;
+    transition: opacity 500ms;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    font-size: 20px;
+  }
+  > a:hover span {
+    opacity: 1;
+  }
+  > a:nth-of-type(4) span {
+    font-size: 100px;
+  }
+
+  > a:nth-of-type(1) {background-color: #03719b}
+  > a:nth-of-type(2) {background-color: #096998}
+  > a:nth-of-type(3) {background-color: #0060ab}
+  > a:nth-of-type(4) {background-color: #004678}
+  > a:nth-of-type(5) {background-color: #153a58}
+  > a:nth-of-type(6) {background-color: #030320}
 }
