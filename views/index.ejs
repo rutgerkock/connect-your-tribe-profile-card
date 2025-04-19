@@ -1,36 +1,17 @@
 <%- include('./partials/head') %>
 
-<article>
-  <a href="#">
-    <h1><%= data.name.charAt(0) %></h1>
-    <p>Naam</p>
-    <span> <%= data.name %> <%= data.surname %> </span>
-  </a>  
-  <a href="https://github.com/<%= data.github_handle %>" target="_blank">
-    <h1><%= data.name.charAt(1) %></h1>
-    <p>Github</p>
-    <span> <%= data.github_handle %> </span>
-  </a>  
-  <a href="mailto:<%= data.email %>">
-    <h1><%= data.name.charAt(2) %></h1>
-    <p>Email</p>
-    <span> <%= data.email %> </span>
-  </a>  
-  <a href="#">
-    <h1><%= data.name.charAt(3) %></h1>
-    <p>Avatar</p>
-    <span> <%= data.avatar %> </span>
-  </a>  
-  <a href="tel:<%= data.phone_number %>">
-    <h1><%= data.name.charAt(4) %></h1>
-    <p>Telefoon</p>
-    <span> <%= data.phone_number %> </span>
-  </a>  
-  <a href="#">
-    <h1><%= data.name.charAt(5) %></h1>
-    <p>Squad</p>
-    <span>Squad ID: <%= data.squad_id %> </span>
-  </a>
-</article>
+<h1><%= data.name %></h1>
+
+<!-- Color preview -->
+<p style="background-color: <%= data.fav_color %>; padding: 1em;">
+  Favorite color: <%= data.fav_color %>
+</p>
+
+<!-- Color picker form -->
+<form method="POST" action="/">
+  <label for="fav_color">Pick a new color:</label>
+  <input type="color" id="fav_color" name="fav_color" value="<%= data.fav_color %>">
+  <button type="submit">Save color</button>
+</form>
 
 <%- include('./partials/foot') %>

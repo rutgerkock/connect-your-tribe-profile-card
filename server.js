@@ -19,17 +19,33 @@ app.set('views', './views')
 // Gebruik de map 'public' voor statische resources
 app.use(express.static('public'))
 
+app.use(express.urlencoded({ extended: true }))
+
+
 // Maak een GET route voor de index
-app.get('/', function (request, response) {
-  // Render index.ejs uit de views map en geef uit FDND API opgehaalde data mee
+app.get('/', async function (request, response) {
+  const data = await fetchJson('https://fdnd.directus.app/items/person/53')
   response.render('index', data)
 })
 
-// Maak een POST route voor de index
-app.post('/', function (request, response) {
-  // Er is nog geen afhandeling van POST, redirect naar GET op /
-  response.redirect(303, '/')
+
+
+app.post('/', async function (request, response) {
+  const newColor = request.body.fav_color
+  console.log('Nieuwe kleur:', newColor)
+
+  await fetch('https://fdnd.directus.app/items/person/53', {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ fav_color: newColor })
+  })
+
+  const updatedData = await fetchJson('https://fdnd.directus.app/items/person/53')
+  response.render('index', updatedData)
 })
+
 
 // Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8000)
