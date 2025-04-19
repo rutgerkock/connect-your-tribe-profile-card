@@ -32,7 +32,6 @@ app.get('/', async function (request, response) {
 
 app.post('/', async function (request, response) {
   const newColor = request.body.fav_color
-  console.log('Nieuwe kleur:', newColor)
 
   await fetch('https://fdnd.directus.app/items/person/53', {
     method: 'PATCH',

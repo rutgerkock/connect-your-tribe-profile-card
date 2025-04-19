@@ -1,17 +1,25 @@
 <%- include('./partials/head') %>
 
-<h1><%= data.name %></h1>
+<div class="container">
+  <header class="header">
+    <h1 class="name"><%= data.name %></h1>
+    <div class="links">
+      <a class="link" href="https://github.com/<%= data.github_handle %>" target="_blank">GitHub</a>
+      <a class="link" href="https://<%= data.website %>" target="_blank">Website</a>
+    </div>
+  </header>
 
-<!-- Color preview -->
-<p style="background-color: <%= data.fav_color %>; padding: 1em;">
-  Favorite color: <%= data.fav_color %>
-</p>
+  <section class="favorite-color">
+    <p class="color-box" style="background-color: <%= data.fav_color %>;">
+      Favorite color: <%= data.fav_color %>
+    </p>
 
-<!-- Color picker form -->
-<form method="POST" action="/">
-  <label for="fav_color">Pick a new color:</label>
-  <input type="color" id="fav_color" name="fav_color" value="<%= data.fav_color %>">
-  <button type="submit">Save color</button>
-</form>
+    <form method="POST" action="/" class="color-form">
+      <label for="fav_color">Achtergrond kleur:</label>
+      <input type="color" id="fav_color" name="fav_color" value="<%= data.fav_color %>">
+      <button type="submit" class="button">Save color</button>
+    </form>
+  </section>
+</div>
 
 <%- include('./partials/foot') %>
