@@ -1,3 +1,49 @@
   </body>
 </html>
 
+  <script>
+      const form = document.querySelector('.color-form');
+      const colorBox = document.querySelector('.color-box');
+      const colorInput = form.querySelector('#fav_color');
+      const button = form.querySelector('button');
+
+      form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          button.disabled = true;
+          button.textContent = 'Saving...';
+
+          const newColor = colorInput.value;
+
+          try {
+              const response = await fetch('/', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ fav_color: newColor }),
+              });
+
+              if (!response.ok) throw new Error('Network error');
+
+              const updatedData = await response.json();
+
+              // Update color box and input with updated color
+              colorBox.style.backgroundColor = updatedData.fav_color;
+              colorBox.textContent = updatedData.fav_color;
+              colorInput.value = updatedData.fav_color;
+
+              button.textContent = 'Saved!';
+              setTimeout(() => {
+                  button.textContent = 'Save color';
+                  button.disabled = false;
+              }, 1500);
+
+          } catch (error) {
+              button.textContent = 'Error!';
+              setTimeout(() => {
+                  button.textContent = 'Save color';
+                  button.disabled = false;
+              }, 1500);
+              alert('Error saving color: ' + error.message);
+          }
+      });
+  </script>

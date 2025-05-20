@@ -28,12 +28,9 @@ app.get('/', async function (request, response) {
   response.render('index', data)
 })
 
-
-
-app.post('/', async function (request, response) {
+app.post('/', async (request, response) => {
   const newColor = request.body.fav_color;
 
-  // Save the color change
   await fetch('https://fdnd.directus.app/items/person/53', {
     method: 'PATCH',
     headers: {
@@ -43,9 +40,8 @@ app.post('/', async function (request, response) {
   });
 
   const updatedData = await fetchJson('https://fdnd.directus.app/items/person/53');
-  response.render('index', updatedData);
+  response.json(updatedData); // respond with JSON, NOT render!
 });
-
 
 
 // Stel het poortnummer in waar express op moet gaan luisteren
