@@ -1,2 +1,35 @@
   </body>
 </html>
+
+  <script>
+      document.querySelector('.color-form').addEventListener('submit', async function(event) {
+          event.preventDefault(); // Stop the form from submitting and reloading the page
+
+          const form = event.target;
+          const colorInput = form.fav_color.value;
+
+          // Send the POST request using fetch
+          const response = await fetch('/', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+              },
+              body: new URLSearchParams({
+                  fav_color: colorInput
+              })
+          });
+
+          // Optionally, update the page with the new color (without reload)
+          if (response.ok) {
+              const parser = new DOMParser();
+              const html = await response.text();
+              // Replace the body or specific section with the updated HTML
+              // Example: reload the color box and form section
+              const doc = parser.parseFromString(html, 'text/html');
+              document.querySelector('.favorite-color').innerHTML =
+                  doc.querySelector('.favorite-color').innerHTML;
+              document.querySelector('.json-data').innerHTML =
+                  doc.querySelector('.json-data').innerHTML;
+          }
+      });
+  </script>
