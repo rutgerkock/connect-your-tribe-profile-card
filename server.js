@@ -24,36 +24,26 @@ app.use(express.urlencoded({ extended: true }))
 
 // Maak een GET route voor de index
 app.get('/', async function (request, response) {
-  const data = await fetchJson('https://fdnd.directus.app/items/person/53')
-  response.render('index', data)
+  const peopleData = await fetchJson('https://fdnd.directus.app/items/person')
+  response.render('index', { people: peopleData.data }) // pass only the array
 })
 
 
 
-app.post('/', async (request, response) => {
-  const newColor = request.body.fav_color;
+app.post('/', async function (request, response) {
+  const newColor = request.body.fav_color
 
   await fetch('https://fdnd.directus.app/items/person/53', {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ fav_color: newColor }),
-  });
+    body: JSON.stringify({ fav_color: newColor })
+  })
 
-  const updatedData = await fetchJson('https://fdnd.directus.app/items/person/53');
-
-  // Render the updated page to a string and send it
-  response.render('index', updatedData, (err, html) => {
-    if (err) {
-      console.error(err);
-      return response.status(500).send('Rendering error');
-    }
-    response.send(html); // Send the HTML to the frontend
-  });
-});
-
-
+  const updatedData = await fetchJson('https://fdnd.directus.app/items/person/53')
+  response.render('index', updatedData)
+})
 
 
 // Stel het poortnummer in waar express op moet gaan luisteren
