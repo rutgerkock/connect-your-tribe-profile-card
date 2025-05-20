@@ -24,8 +24,8 @@ app.use(express.urlencoded({ extended: true }))
 
 // Maak een GET route voor de index
 app.get('/', async function (request, response) {
-  const peopleData = await fetchJson('https://fdnd.directus.app/items/person')
-  response.render('index', { people: peopleData.data }) // pass only the array
+  const data = await fetchJson('https://fdnd.directus.app/items/person/53')
+  response.render('index', data)
 })
 
 
