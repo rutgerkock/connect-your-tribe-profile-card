@@ -32,13 +32,18 @@ app.get('/', async function (request, response) {
 
 app.post('/', async function (request, response) {
   const newColor = request.body.fav_color;
+
+  // Save the color change
   await fetch('https://fdnd.directus.app/items/person/53', {
     method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({ fav_color: newColor }),
   });
+
   const updatedData = await fetchJson('https://fdnd.directus.app/items/person/53');
-  response.json(updatedData); // <-- respond with JSON
+  response.render('index', updatedData);
 });
 
 
