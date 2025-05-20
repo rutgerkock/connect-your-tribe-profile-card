@@ -1,6 +1,10 @@
 <%- include('./partials/head') %>
 
 <header class="header">
+
+  <a href="https://github.com/<%= data.github_handle %>" target="_blank">
+    <img src="<%= data.avatar %> " alt="Avatar">
+  </a>
   <h1 class="name"><%= data.name %></h1>
   <div class="links">
     <a class="link" href="https://github.com/<%= data.github_handle %>" target="_blank">GitHub</a>
