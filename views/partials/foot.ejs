@@ -2,48 +2,34 @@
 </html>
 
   <script>
-      const form = document.querySelector('.color-form');
-      const colorBox = document.querySelector('.color-box');
-      const colorInput = form.querySelector('#fav_color');
-      const button = form.querySelector('button');
+      document.querySelector('.color-form').addEventListener('submit', async function(event) {
+          event.preventDefault(); // Stop the form from submitting and reloading the page
 
-      form.addEventListener('submit', async (e) => {
-          e.preventDefault();
+          const form = event.target;
+          const colorInput = form.fav_color.value;
 
-          button.disabled = true;
-          button.textContent = 'Saving...';
+          // Send the POST request using fetch
+          const response = await fetch('/', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+              },
+              body: new URLSearchParams({
+                  fav_color: colorInput
+              })
+          });
 
-          const newColor = colorInput.value;
-
-          try {
-              const response = await fetch('/', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ fav_color: newColor }),
-              });
-
-              if (!response.ok) throw new Error('Network error');
-
-              const updatedData = await response.json();
-
-              // Update color box and input with updated color
-              colorBox.style.backgroundColor = updatedData.fav_color;
-              colorBox.textContent = updatedData.fav_color;
-              colorInput.value = updatedData.fav_color;
-
-              button.textContent = 'Saved!';
-              setTimeout(() => {
-                  button.textContent = 'Save color';
-                  button.disabled = false;
-              }, 1500);
-
-          } catch (error) {
-              button.textContent = 'Error!';
-              setTimeout(() => {
-                  button.textContent = 'Save color';
-                  button.disabled = false;
-              }, 1500);
-              alert('Error saving color: ' + error.message);
+          // Optionally, update the page with the new color (without reload)
+          if (response.ok) {
+              const parser = new DOMParser();
+              const html = await response.text();
+              // Replace the body or specific section with the updated HTML
+              // Example: reload the color box and form section
+              const doc = parser.parseFromString(html, 'text/html');
+              document.querySelector('.favorite-color').innerHTML =
+                  doc.querySelector('.favorite-color').innerHTML;
+              document.querySelector('.json-data').innerHTML =
+                  doc.querySelector('.json-data').innerHTML;
           }
       });
   </script>

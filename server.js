@@ -28,20 +28,19 @@ app.get('/', async function (request, response) {
   response.render('index', data)
 })
 
-app.post('/', async (request, response) => {
-  const newColor = request.body.fav_color;
 
+
+app.post('/', async function (request, response) {
+  const newColor = request.body.fav_color;
   await fetch('https://fdnd.directus.app/items/person/53', {
     method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ fav_color: newColor }),
   });
-
   const updatedData = await fetchJson('https://fdnd.directus.app/items/person/53');
-  response.json(updatedData); // respond with JSON, NOT render!
+  response.json(updatedData); // <-- respond with JSON
 });
+
 
 
 // Stel het poortnummer in waar express op moet gaan luisteren
